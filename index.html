@@ -113,7 +113,22 @@
 
     function downloadSignature() {
         var canvas = document.getElementById("signature-pad");
-        var dataURL = canvas.toDataURL("image/png");
+        var tempCanvas = document.createElement("canvas");
+        var ctx = tempCanvas.getContext("2d");
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+
+        // Draw a white background
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+        // Draw the signature on the white background
+        ctx.drawImage(canvas, 0, 0);
+
+        // Convert the canvas to a data URL
+        var dataURL = tempCanvas.toDataURL("image/png");
+
+        // Create a temporary link and trigger a click event to download the image
         var link = document.createElement("a");
         link.href = dataURL;
         link.download = "signature.png";
