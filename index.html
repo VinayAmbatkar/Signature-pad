@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Signature Pad By  Vinay</title>
+<title>Signature Pad By Vinay</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -39,6 +39,7 @@
         height: 200px; /* Default height */
         cursor: crosshair;
         margin-bottom: 20px;
+        background-color: #fff; /* White background */
     }
 
     button {
@@ -93,14 +94,20 @@
 <script>
     window.onload = function () {
         var canvas = document.getElementById("signature-pad");
-        var signaturePad = new SignaturePad(canvas);
+        var signaturePad = new SignaturePad(canvas, {
+            backgroundColor: 'rgb(255, 255, 255)', // set white background
+            penColor: 'rgb(0, 0, 0)' // set black signature
+        });
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
     };
 
     function clearSignature() {
         var canvas = document.getElementById("signature-pad");
-        var signaturePad = new SignaturePad(canvas);
+        var signaturePad = new SignaturePad(canvas, {
+            backgroundColor: 'rgb(255, 255, 255)', // set white background
+            penColor: 'rgb(0, 0, 0)' // set black signature
+        });
         signaturePad.clear();
     }
 
